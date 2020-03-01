@@ -6,20 +6,20 @@ import App from './App';
 
 let container = null;
 beforeEach(() => {
-  container = document.createElement("div");
-  document.body.appendChild(container);
+    container = document.createElement("div");
+    document.body.appendChild(container);
 });
 
 afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
 });
 
 it("renders with or without a name", () => {
-  act(() => {
-    render(<App />, container);
-  });
+    act(() => {
+        render(<App />, container);
+    });
 
-  expect(container.querySelector('h1').innerHTML).toBe('Fill out this awesome form');
+    expect(container.querySelector('h1').innerHTML).toBe('Fill out this awesome form');
 });

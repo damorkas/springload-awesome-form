@@ -6,41 +6,41 @@ import Input from './Input';
 
 let container = null;
 beforeEach(() => {
-  container = document.createElement("div");
-  document.body.appendChild(container);
+    container = document.createElement("div");
+    document.body.appendChild(container);
 });
 
 afterEach(() => {
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
 });
 
 it("renders default <input>", () => {
     act(() => {
-      render(<Input label='default_input' />, container);
+        render(<Input label='default_input' />, container);
     });
-  
+
     expect(container.textContent).toBe("default_input");
     expect(container.getElementsByTagName('input')).toHaveLength(1);
-  });
+});
 
 it("renders <input>", () => {
-  const inputConfig = {
-    id: 'email',
-    elementType: 'input',
-    label: 'Email'
-  }
+    const inputConfig = {
+        id: 'email',
+        elementType: 'input',
+        label: 'Email'
+    }
 
-  act(() => {
-    render(<Input 
-        key={inputConfig.id} 
-        label={inputConfig.label}
-        elementType={inputConfig.elementType} />, container);
-  });
+    act(() => {
+        render(<Input
+            key={inputConfig.id}
+            label={inputConfig.label}
+            elementType={inputConfig.elementType} />, container);
+    });
 
-  expect(container.textContent).toBe("Email");
-  expect(container.getElementsByTagName('input')).toHaveLength(1);
+    expect(container.textContent).toBe("Email");
+    expect(container.getElementsByTagName('input')).toHaveLength(1);
 });
 
 it("renders <select>", () => {
@@ -52,15 +52,15 @@ it("renders <select>", () => {
         },
         label: 'Colour'
     }
-  
+
     act(() => {
-      render(<Input 
-          key={inputConfig.id} 
-          label={inputConfig.label}
-          elementType={inputConfig.elementType}
-          elementConfig={inputConfig.elementConfig} />, container);
+        render(<Input
+            key={inputConfig.id}
+            label={inputConfig.label}
+            elementType={inputConfig.elementType}
+            elementConfig={inputConfig.elementConfig} />, container);
     });
-  
+
     expect(container.textContent).toBe("Colour");
     expect(container.getElementsByTagName('select')).toHaveLength(1);
-  });
+});
